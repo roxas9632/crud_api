@@ -18,13 +18,18 @@ class PostController extends Controller
 
 
     /**
-     * Display a listing of the resource.
+     * 讀取所有上架的文章
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $posts = Post::where('enabled',true)->orderBy('sort','asc')->get();
+        if($posts && count($posts) > 0){
+            return $this->makeJson(1,$posts,null);
+        }else{
+            return $this->makeJson(0,null,'找不到上架的文章');
+        }
     }
 
     /**
@@ -59,30 +64,36 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Request $request,$id)
-    // {
-    //     $post = Post::select(['id','title','category_id','content','pic','sort','enabled'])->find($id);
-    //     if($request->has('show_category') && $request->show_category == '1'){
-    //         $category = $post->category;
-    //     }else{
-    //         $category = null;
-    //     }
-
-    //     if($post){
-    //         if($category){
-    //             $data = $post->toArray();
-    //             $data['category'] = $category;
-    //             return $this->makeJson(1,$data,null);
-    //         }else{
-    //             return $this->makeJson(1,$post,null);
-    //         }
-
-    //     }else{
-    //         return $this->makeJson(0,null,'找不到該文章');
-    //     }
-    // }
-
     public function show(Request $request,$id)
+    {
+        $post = Post::select(['id','title','category_id','content','pic','sort','enabled'])->find($id);
+        if($request->has('show_category') && $request->show_category == '1'){
+            $category = $post->category;
+        }else{
+            $category = null;
+        }
+
+        if($post){
+            if($category){
+                $data = $post->toArray();
+                $data['category'] = $category;
+                return $this->makeJson(1,$data,null);
+            }else{
+                return $this->makeJson(1,$post,null);
+            }
+
+        }else{
+            return $this->makeJson(0,null,'找不到該文章');
+        }
+    }
+
+    /**
+     * 同樣讀取某一篇文章，但以 Mutator 技巧來簡化
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showByMutator(Request $request,$id)
     {
         $post = Post::select(['id','title','category_id','content','pic','sort','enabled'])->find($id);
         $data = $post;
@@ -98,7 +109,7 @@ class PostController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
+     * 更新某一篇文章
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -106,11 +117,20 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $params = $request->only(['title','category_id','content','pic','sort','enabled']);
+        $row = $post->update($params);
+        if($row == 1){
+            $data = ['post_id' => $post->id];
+            return $this->makeJson(1,$data,null);
+        }else{
+            return $this->makeJson(0,null,'更新文章失敗');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 刪除某一篇文章
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
