@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -150,6 +151,41 @@ class PostController extends Controller
             return $this->makeJson(1,null,null);
         }else{
             return $this->makeJson(0,null,"刪除資料錯誤");
+        }
+    }
+
+    public function updateTag(Request $request)
+    {
+        $data = $request->only(['post_id','tag_id','mode']);
+        if($request->has('post_id')){
+            $post_id = $data['post_id'];
+            $post = Post::find($post_id);
+        }else{
+            return $this->makeJson(0,null,"未提供 post_id");
+        }
+        if($request->has('tag_id')){
+            $tag_id = $data['tag_id'];
+            $tag = Tag::find($tag_id);
+        }else{
+            return $this->makeJson(0,null,"未提供 tag_id");
+        }
+        if($post && $tag){
+            if($request->has('mode')){
+                if($data['mode'] == 'detach'){
+                    $post->tags()->detach($tag_id);
+                }else{
+                    $post->tags()->attach($tag_id);
+                }
+                $data = [];
+                foreach( $post->tags as $tag){
+                    $response_data[] = $tag->id;
+                }
+                return $this->makeJson(1,$response_data);
+            }else{
+                return $this->makeJson(0,null,"未提供 mode");
+            }
+        }else{
+            return $this->makeJson(0,null,"找不到 tag 或 post 資料");
         }
     }
 }

@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::put('posts/post_tag','App\Http\Controllers\Api\PostController@updateTag');
 Route::apiResource('posts','App\Http\Controllers\Api\PostController');
+
