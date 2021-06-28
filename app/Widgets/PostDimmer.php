@@ -45,6 +45,7 @@ class PostDimmer extends BaseDimmer
      */
     public function shouldBeDisplayed()
     {
-        return true;
+        $posts = Post::get();
+        return Auth::user()->can('browse',$posts[0]);
     }
 }
