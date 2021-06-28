@@ -1,4 +1,4 @@
-
+{{--
 @model IEnumerable<foodfun.Models.Products>
     @using foodfun.Models;
 
@@ -10,14 +10,14 @@
         string cate_name = ViewBag.CategoryName;
         List<Categorys> categorys = new List<Categorys>();
         categorys = Shop.GetCategarysIsSale();
-    }
+    }  --}}
 
 
     <section class="popular-items latest-padding">
         <div class="container">
 
 
-            @*=========分類列表=========*@
+            {{--  @*=========分類列表=========*@  --}}
 
             <div class="row product-btn justify-content-between mb-40">
                 <div class="properties__button col-12">
@@ -25,10 +25,10 @@
                         <div class="scrollmenu ">
                             <div class="itemwidth ">
                                 <a class="nav-item nav-link bg-danger mx-2 px-4 py-3" id="nav-home-tab" data-toggle="" href="/Product/CategoryList/HOT" role="tab" aria-controls="nav-home" aria-selected="true">熱門商品</a>
-                                @foreach (var item in categorys)
+                                {{--  @foreach (var item in categorys)
                                 {
                                     <a class="nav-item nav-link bg-danger mx-2 px-4 py-3" href="/Product/CategoryList/@item.category_no">@item.category_name</a>
-                                }
+                                }  --}}
                             </div>
                         </div>
 
@@ -37,7 +37,7 @@
             </div>
 
 
-            @*=========商品==========*@
+            {{--  @*=========商品==========*@  --}}
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
