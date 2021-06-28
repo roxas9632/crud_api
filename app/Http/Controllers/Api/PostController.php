@@ -190,9 +190,6 @@ class PostController extends Controller
                         return $this->makeJson(0,null,"post 已存在該 tag");
                     }
                 }
-                //作法1
-
-                //作法2
                 //$response_data = $post->tags->pluck('id');
                 return $this->makeJson(1,$post->tags_id_array);
             }else{
@@ -200,6 +197,22 @@ class PostController extends Controller
             }
         }else{
             return $this->makeJson(0,null,"找不到 tag 或 post 資料");
+        }
+    }
+
+    public function indexByTitle(Request $request)
+    {
+        $s = $request->s;
+        if($s){
+            $data = Post::where('title','like','%'.$s.'%')->where('enabled',true)->orderBy('created_at','desc')->get();
+        }else{
+            $data = Post::where('enabled',true)->orderBy('created_at','desc')->get();
+        }
+        if($data && count($data)>0){
+            $data = [ 'posts' => $data ];
+            return $this->makeJson(1,$data);
+        }else{
+            return $this->makeJson(0,null,"找不到");
         }
     }
 }
