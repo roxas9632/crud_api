@@ -115,9 +115,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Post $post)    //url?role=xxx
     {
-        $post = Post::find($id);
+        //$post = Post::find($id);
+        //Route Model Binding
 
         $params = $request->only(['title','category_id','content','pic','sort','enabled']);
         $row = $post->update($params);
@@ -135,8 +136,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $row = 0;
+        if($post){
+            //刪除前先處理掉所有的關聯
+            $post->tags()->sync([]);
+            $row = $post->delete();
+        }else{
+            return $this->makeJson(0,null,"找不到要刪除的資料");
+        }
+        if($row == 1){
+            return $this->makeJson(1,null,null);
+        }else{
+            return $this->makeJson(0,null,"刪除資料錯誤");
+        }
     }
 }

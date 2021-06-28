@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
+    //處理 Mass Assignment 的防護
     protected $fillable = ['title', 'category_id', 'content', 'pic', 'sort', 'enabled'];
 
     protected $casts = [
