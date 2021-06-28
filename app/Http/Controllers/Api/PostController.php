@@ -157,12 +157,14 @@ class PostController extends Controller
     public function updateTag(Request $request)
     {
         $data = $request->only(['post_id','tag_id','mode']);
+        //處理 post
         if($request->has('post_id')){
             $post_id = $data['post_id'];
             $post = Post::find($post_id);
         }else{
             return $this->makeJson(0,null,"未提供 post_id");
         }
+        //處理 tag
         if($request->has('tag_id')){
             $tag_id = $data['tag_id'];
             $tag = Tag::find($tag_id);
@@ -172,15 +174,27 @@ class PostController extends Controller
         if($post && $tag){
             if($request->has('mode')){
                 if($data['mode'] == 'detach'){
-                    $post->tags()->detach($tag_id);
+                    //移除多對多關係
+                    $isExist = $post->tags->contains($tag->id);
+                    if($isExist){
+                        $post->tags()->detach($tag_id);
+                    }else{
+                        return $this->makeJson(0,null,"post 不存在該 tag");
+                    }
                 }else{
-                    $post->tags()->attach($tag_id);
+                    //新增多對多關係
+                    $isExist = $post->tags->contains($tag->id);
+                    if(!$isExist){
+                        $post->tags()->attach($tag_id);
+                    }else{
+                        return $this->makeJson(0,null,"post 已存在該 tag");
+                    }
                 }
-                $data = [];
-                foreach( $post->tags as $tag){
-                    $response_data[] = $tag->id;
-                }
-                return $this->makeJson(1,$response_data);
+                //作法1
+
+                //作法2
+                //$response_data = $post->tags->pluck('id');
+                return $this->makeJson(1,$post->tags_id_array);
             }else{
                 return $this->makeJson(0,null,"未提供 mode");
             }

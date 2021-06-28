@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PostTag;
 
 class Post extends Model
 {
@@ -30,5 +31,15 @@ class Post extends Model
     public function getCategoryArrayAttribute()
     {
         return $this->category->toArray();
+    }
+
+    public function getTagsIdArrayAttribute()
+    {
+        $data = [];
+        $post_tags = PostTag::where('post_id',$this->id)->get();
+        foreach( $post_tags as $post_tag){
+            $data[] = $post_tag->tag_id;
+        }
+        return $data;
     }
 }
