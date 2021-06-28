@@ -40,4 +40,9 @@ class Post extends Model
         }
         return $data;
     }
+
+    public function scopeEnabled($query)
+    {
+        return $query->where('enabled',true)->orderBy('created_at','desc');
+    }
 }

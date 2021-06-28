@@ -200,13 +200,19 @@ class PostController extends Controller
         }
     }
 
+
+    /**用關鍵字來查詢文章的標題
+     * @param Request $request
+     *
+     * @return [Array]
+     */
     public function indexByTitle(Request $request)
     {
         $s = $request->s;
         if($s){
-            $data = Post::where('title','like','%'.$s.'%')->where('enabled',true)->orderBy('created_at','desc')->get();
+            $data = Post::where('title','like','%'.$s.'%')->enabled()->get();
         }else{
-            $data = Post::where('enabled',true)->orderBy('created_at','desc')->get();
+            $data = Post::enabled()->get();
         }
         if($data && count($data)>0){
             $data = [ 'posts' => $data ];
