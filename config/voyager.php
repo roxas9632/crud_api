@@ -150,7 +150,7 @@ return [
         ],
 
         'widgets' => [
-
+            'App\Widgets\PostDimmer'
         ],
 
     ],
