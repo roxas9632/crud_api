@@ -23,7 +23,7 @@
         <template x-for="result in results">
           <div class="postCard">
             <div>
-              <img x-bind:src="storage/result.pic" />
+              <img x-bind:src="result.pic" />
             </div>
             <div>
               <div class="postDetailItem">

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Post extends Model
 {
@@ -39,6 +41,11 @@ class Post extends Model
             $data[] = $tag->id;
         }
         return $data;
+    }
+
+    public function getPicAttribute($value)
+    {
+        return Voyager::image($value);
     }
 
     public function scopeEnabled($query)
