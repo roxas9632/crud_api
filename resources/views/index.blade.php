@@ -10,17 +10,17 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <div class="hero__caption">
-                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">Select Your New Perfect Style</h1>
-                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
+                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">{{ $el->title }}</h1>
+                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">{{ $el->subtitle }}</p>
                             <!-- Hero-btn -->
                             <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                                <a href="{{ $el->url }}" class="btn hero-btn">{{ $el->url_txt }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                            <img src="{{ asset('img/hero/watch.png') }}" alt="" class=" heartbeat">
+                            <img src="{{ Voyager::image($el->pic) }}" alt="{{ $el->title }}" class=" heartbeat">
                         </div>
                     </div>
                 </div>

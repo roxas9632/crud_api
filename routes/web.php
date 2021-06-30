@@ -29,5 +29,4 @@ Route::get('test',function(){
     return view("test");
 });
 
-Route::view('demo','index');
-Route::view('shop','shop');
+Route::get('shop','App\Http\Controllers\SiteController@renderShopPage');
