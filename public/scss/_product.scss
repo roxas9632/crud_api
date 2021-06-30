@@ -1521,7 +1521,7 @@
 
 //.p_star input:valid + .placeholder {
 //    display: none;
-//}/*
+//}
 .p_star input:focus+.placeholder {
   display: none;
 }
@@ -1542,7 +1542,7 @@
 .p_star .placeholder::after {
   content: " *";
   color: tomato;
-}*/
+}
 
 .cupon_area {
   margin-bottom: 40px;

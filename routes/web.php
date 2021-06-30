@@ -26,5 +26,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('test',function(){
-    return menu('admin','_json');
+    return view("test");
 });
+
+Route::view('demo','index');
+Route::view('shop','shop');
