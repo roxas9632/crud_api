@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Element extends Model
 {
     use HasFactory;
-
     public function scopeEnabled($query)
     {
         return $query->where('enabled',true)->orderBy('sort','asc');
