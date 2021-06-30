@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(TagSeeder::class);
         $this->call(PostSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(OrderSeeder::class);
         Schema::enableForeignKeyConstraints();
     }
 }
