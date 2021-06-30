@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                            <img src="{{ Voyager::image($el->pic) }}" alt="{{ $el->title }}" class=" heartbeat">
+                            <img src="{{ $el->pic }}" alt="{{ $el->title }}" class=" heartbeat">
                         </div>
                     </div>
                 </div>
@@ -58,44 +58,24 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="section-tittle mb-70">
-                    <h2>New Arrivals</h2>
+                    <h2>暢銷商品</h2>
                 </div>
             </div>
         </div>
         <div class="row">
+            @foreach ($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="single-new-pro mb-30 text-center">
                     <div class="product-img">
-                        <img src="{{ asset('img/gallery/new_product1.png') }}" alt="">
+                        <img src="{{ $product->pic }}" alt="">
                     </div>
                     <div class="product-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
+                        <h3><a href="product_details.html">{{ $product->name }}</a></h3>
+                        <span>${{ $product->price }}</span>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-new-pro mb-30 text-center">
-                    <div class="product-img">
-                        <img src="{{ asset('img/gallery/new_product2.png') }}" alt="">
-                    </div>
-                    <div class="product-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-new-pro mb-30 text-center">
-                    <div class="product-img">
-                        <img src="{{ asset('img/gallery/new_product3.png') }}" alt="">
-                    </div>
-                    <div class="product-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
