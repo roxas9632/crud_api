@@ -37,6 +37,7 @@
                                 <!-- logo -->
                                 <div class="footer-logo">
                                     <a href="#">@*<img src="assets/img/logo/logo2_footer.png" alt="">*@</a>
+                                                {-- <img src="assets/img/logo/logo2_footer.png" alt=""> --}
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
