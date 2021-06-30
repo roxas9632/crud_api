@@ -20,7 +20,11 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
+<<<<<<< HEAD
                             <img src="{{ $el->pic }}" alt="{{ $el->title }}" class=" heartbeat">
+=======
+                            <img src="{{ Voyager::image($el->pic) }}" alt="{{ $el->title }}" class=" heartbeat">
+>>>>>>> d80b6c0... 1.將首頁Slider串接後台
                         </div>
                     </div>
                 </div>
