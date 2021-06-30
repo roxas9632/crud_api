@@ -26,5 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('test',function(){
-    return menu('admin','_json');
+    return view("test");
 });
+
+Route::get('shop','App\Http\Controllers\SiteController@renderShopPage');

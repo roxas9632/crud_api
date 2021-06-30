@@ -40,6 +40,10 @@ class CreateElementsTable extends Migration
      */
     public function down()
     {
+<<<<<<< HEAD
         Schema::dropIfExists('elements');
+=======
+        Schema::dropIfExist('elements');
+>>>>>>> frontend
     }
 }
