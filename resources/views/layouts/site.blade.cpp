@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title> @ViewBag.Title - @AppService.AppName</title>
+            {{ $viewBag->title }} - {{ $appService->appName }}
     <link rel="shortcut icon" type="image/x-icon" href="~/img/logoicon.png".ico">
 
 
@@ -11,15 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Html.Partial("~/Views/Shared/_PartialLinkCss.cshtml")
 
+    @include("~/views/shared/_partialLinkCss.cshtml")
 
 
 </head>
 <body class="bg-light">
     @Html.Partial("~/Views/Shared/_PartialHeader.cshtml")
+    @include("~/views/shared/_partialHeader.cshtml")
 
     <main>
 
         @RenderBody()
+        @yield('body')
 
     </main>
     <footer>
@@ -123,6 +127,8 @@
     </div>
 
     @Html.Partial("~/Views/Shared/_PartialLinkJs.cshtml")
+    @include("~/views/shared/_partialLinkJs.cshtml")
+
 </body>
 
 </html>
