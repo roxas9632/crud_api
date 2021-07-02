@@ -156,6 +156,7 @@
                                 <a href="#"><i class="fab fa-behance"></i></a>
                                 <a href="#"><i class="fas fa-globe"></i></a>
                             </div>
+                            客服專線:{{ $tel }}
                         </div>
                     </div>
                 </div>

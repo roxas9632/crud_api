@@ -51,6 +51,7 @@
         </div>
     </div>
 </div>
+
 <!-- slider Area End-->
 <!-- ? New Product Start -->
 <section class="new-product-area section-padding30">

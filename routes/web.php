@@ -29,4 +29,6 @@ Route::get('test',function(){
     return view("test");
 });
 
+Route::view('/demo','demo');
+
 Route::get('shop','App\Http\Controllers\SiteController@renderShopPage');

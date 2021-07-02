@@ -10,7 +10,7 @@ class SiteController extends Controller
 {
     public function renderShopPage()
     {
-        return view('shop');
+        return view('shop.index');
     }
 
     public function renderHomePage()

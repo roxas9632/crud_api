@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -20,5 +21,19 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class);
+    }
+
+    public function scopeEnabled($query)
+    {
+        return $query->where('enabled',true)->orderBy('price','asc');
+    }
+
+    public function getPicAttribute($value)
+    {
+        if(!str_starts_with($value, 'https')){
+            return Voyager::image($value);
+        }else{
+            return $value;
+        }
     }
 }
