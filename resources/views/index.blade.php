@@ -10,18 +10,18 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <div class="hero__caption">
-                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">{{ $el->title }}</h1>
-                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">{{ $el->subtitle }}</p>
+                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">{{ $el_slider->title }}</h1>
+                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">{{ $el_slider->subtitle }}</p>
                             <!-- Hero-btn -->
                             <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                <a href="{{ $el->url }}" class="btn hero-btn">{{ $el->url_txt }}</a>
+                                <a href="{{ $el_slider->url }}" class="btn hero-btn">{{ $el_slider->url_txt }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                            <img src="{{ $el->pic }}" alt="{{ $el->title }}" class=" heartbeat">
-                            <img src="{{ Voyager::image($el->pic) }}" alt="{{ $el->title }}" class=" heartbeat">
+                            <img src="{{ $el_slider->pic }}" alt="{{ $el_slider->title }}" class=" heartbeat">
+                            <img src="{{ Voyager::image($el_slider->pic) }}" alt="{{ $el_slider->title }}" class=" heartbeat">
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
         </div>
         <div class="row">
             @foreach ($products as $product)
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="single-new-pro mb-30 text-center">
                     <div class="product-img">
                         <img src="{{ $product->pic }}" alt="">
@@ -86,31 +86,13 @@
 <div class="gallery-area">
     <div class="container-fluid p-0 fix">
         <div class="row">
-            <div class="col-xl-6 col-lg-4 col-md-6 col-sm-6">
+            @foreach ($els_gallery as $el)
+            <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-gallery mb-30">
-                    <div class="gallery-img big-img" style="background-image: url(img/gallery/gallery1.png);"></div>
+                    <div class="gallery-img big-img" style="background-image: url({{ $el->pic }});"></div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-gallery mb-30">
-                    <div class="gallery-img big-img" style="background-image: url(img/gallery/gallery2.png);"></div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-12">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6">
-                        <div class="single-gallery mb-30">
-                            <div class="gallery-img small-img" style="background-image: url(img/gallery/gallery3.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12 col-lg-12  col-md-6 col-sm-6">
-                        <div class="single-gallery mb-30">
-                            <div class="gallery-img small-img" style="background-image: url(img/gallery/gallery4.png);"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </div>

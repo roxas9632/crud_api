@@ -15,8 +15,9 @@ class SiteController extends Controller
 
     public function renderHomePage()
     {
-        $el = Element::where('page','index')->where('position','slider')->enabled()->first();
+        $el_slider = Element::where('page','index')->where('position','slider')->enabled()->first();
+        $els_gallery = Element::where('page','index')->where('position','gallery')->enabled()->get();
         $products = Product::where('hoted',true)->orderBy('price','desc')->take(3)->get();
-        return view('index',compact('el','products'));
+        return view('index',compact('el_slider','els_gallery','products'));
     }
 }

@@ -25,8 +25,9 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('test',function(){
-    return view("test");
+Route::get('file',function(){
+    $file= public_path(). "/storage/files/1.pdf"; //完整路徑
+    return response()->file($file);
 });
 
 Route::view('/demo','demo');

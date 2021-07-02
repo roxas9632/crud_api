@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         //在所有頁面都共享這個變數
         view()->share('tel','110');
 
-        $prods = Product::enabled()->take(6)->get();
+        $prods = Product::get();
         view()->composer(['shop.*'],function($view) use ($prods){
             $view->with('prods',$prods);
         });
