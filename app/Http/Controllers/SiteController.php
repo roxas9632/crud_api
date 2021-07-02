@@ -10,7 +10,19 @@ class SiteController extends Controller
 {
     public function renderShopPage()
     {
-        return view('shop.index');
+        $prods_desc = Product::where('enabled',true)->orderBy('price','desc')->get();
+        $prods_hotted = Product::where('enabled',true)->where('hoted',true)->get();
+        return view('shop.index',compact('prods_desc','prods_hotted'));
+    }
+
+    public function renderProductDetailPage()
+    {
+        return view('shop.product_detail');
+    }
+
+    public function renderCartPage()
+    {
+        return view('shop.cart');
     }
 
     public function renderHomePage()
@@ -24,4 +36,5 @@ class SiteController extends Controller
         $best_prods = Product::where('hoted',true)->orderBy('price','desc')->take(2)->get();
         return view('index',compact('el_slider','els_gallery','products','el_news_top','prod_news','el_video','best_prods'));
     }
+
 }

@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('content')
+@section('body')
 <!-- Hero Area Start-->
             <div class="slider-area">
                 <div class="single-slider slider-height2 d-flex align-items-center">

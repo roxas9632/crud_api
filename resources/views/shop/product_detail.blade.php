@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('content')
+@section('body')
 <!-- Hero Area Start-->
         <div class="slider-area ">
             <div class="single-slider slider-height2 d-flex align-items-center">
@@ -23,13 +23,7 @@
                 <div class="col-lg-12">
                 <div class="product_img_slide owl-carousel">
                     <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
-                    </div>
-                    <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery01.png" alt="#" class="img-fluid">
-                    </div>
-                    <div class="single_product_img">
-                        <img src="assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
+                        <img src="/img/gallery/gallery1.png" alt="#" class="img-fluid">
                     </div>
                 </div>
                 </div>
@@ -42,7 +36,7 @@
                     </p>
                     <div class="card_area">
                         <div class="product_count_area">
-                            <p>Quantity</p>
+                            <p>數量</p>
                             <div class="product_count d-inline-block">
                                 <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
                                 <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
@@ -51,7 +45,7 @@
                             <p>$5</p>
                         </div>
                     <div class="add_to_cart">
-                        <a href="#" class="btn_3">add to cart</a>
+                        <a href="#" class="btn_3">加入購物車</a>
                     </div>
                     </div>
                 </div>
