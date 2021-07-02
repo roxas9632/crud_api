@@ -17,6 +17,6 @@ class ProductSeeder extends Seeder
         //刪除既有資料
         Product::truncate();
         //建立商品資料
-        Product::factory()->times(100)->create();
+        Product::factory()->times(10)->create();
     }
 }

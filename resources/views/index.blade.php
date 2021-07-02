@@ -21,29 +21,6 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
                             <img src="{{ $el_slider->pic }}" alt="{{ $el_slider->title }}" class=" heartbeat">
-                            <img src="{{ Voyager::image($el_slider->pic) }}" alt="{{ $el_slider->title }}" class=" heartbeat">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Single Slider -->
-        <div class="single-slider slider-height d-flex align-items-center slide-bg">
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                        <div class="hero__caption">
-                            <h1 data-animation="fadeInLeft" data-delay=".4s" data-duration="2000ms">Select Your New Perfect Style</h1>
-                            <p data-animation="fadeInLeft" data-delay=".7s" data-duration="2000ms">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
-                            <!-- Hero-btn -->
-                            <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                                <a href="industries.html" class="btn hero-btn">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
-                        <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                            <img src="{{ asset('img/hero/watch.png') }}" alt="" class=" heartbeat">
                         </div>
                     </div>
                 </div>
@@ -72,7 +49,7 @@
                         <img src="{{ $product->pic }}" alt="">
                     </div>
                     <div class="product-caption">
-                        <h3><a href="product_details.html">{{ $product->name }}</a></h3>
+                        <h3><a href="{{ url('shop/products/' . $product->id) }}">{{ $product->name }}</a></h3>
                         <span>${{ $product->price }}</span>
                     </div>
                 </div>
@@ -87,7 +64,7 @@
     <div class="container-fluid p-0 fix">
         <div class="row">
             @foreach ($els_gallery as $el)
-            <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-gallery mb-30">
                     <div class="gallery-img big-img" style="background-image: url({{ $el->pic }});"></div>
                 </div>
@@ -104,119 +81,36 @@
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-10">
                 <div class="section-tittle mb-70 text-center">
-                    <h2>Popular Items</h2>
-                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                    <h2>{{ $el_news_top->title }}</h2>
+                    <p>{{ $el_news_top->subtitle }}</p>
                 </div>
             </div>
         </div>
         <div class="row">
+            @foreach ($prod_news as $prod)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="single-popular-items mb-50 text-center">
                     <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular1.png') }}" alt="">
+                        <img src="{{ $prod->pic }}" alt="{{ $prod->name }}">
                         <div class="img-cap">
-                            <span>Add to cart</span>
+                            <span>加入購物車</span>
                         </div>
                         <div class="favorit-items">
                             <span class="flaticon-heart"></span>
                         </div>
                     </div>
                     <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
+                        <h3><a href="{{ url('shop/products/' . $prod->id) }}">{{ $prod->name }}</a></h3>
+                        <span>$ {{ $prod->price }}</span>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-popular-items mb-50 text-center">
-                    <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular2.png') }}" alt="">
-                        <div class="img-cap">
-                            <span>Add to cart</span>
-                        </div>
-                        <div class="favorit-items">
-                            <span class="flaticon-heart"></span>
-                        </div>
-                    </div>
-                    <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-popular-items mb-50 text-center">
-                    <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular3.png') }}" alt="">
-                        <div class="img-cap">
-                            <span>Add to cart</span>
-                        </div>
-                        <div class="favorit-items">
-                            <span class="flaticon-heart"></span>
-                        </div>
-                    </div>
-                    <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-popular-items mb-50 text-center">
-                    <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular4.png') }}" alt="">
-                        <div class="img-cap">
-                            <span>Add to cart</span>
-                        </div>
-                        <div class="favorit-items">
-                            <span class="flaticon-heart"></span>
-                        </div>
-                    </div>
-                    <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-popular-items mb-50 text-center">
-                    <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular5.png') }}" alt="">
-                        <div class="img-cap">
-                            <span>Add to cart</span>
-                        </div>
-                        <div class="favorit-items">
-                            <span class="flaticon-heart"></span>
-                        </div>
-                    </div>
-                    <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="single-popular-items mb-50 text-center">
-                    <div class="popular-img">
-                        <img src="{{ asset('img/gallery/popular6.png') }}" alt="">
-                        <div class="img-cap">
-                            <span>Add to cart</span>
-                        </div>
-                        <div class="favorit-items">
-                            <span class="flaticon-heart"></span>
-                        </div>
-                    </div>
-                    <div class="popular-caption">
-                        <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                        <span>$ 45,743</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <!-- Button -->
         <div class="row justify-content-center">
             <div class="room-btn pt-70">
-                <a href="catagori.html" class="btn view-btn1">View More Products</a>
+                <a href="catagori.html" class="btn view-btn1">看更多商品</a>
             </div>
         </div>
     </div>
@@ -228,14 +122,14 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
             <div class="video-wrap">
-                <div class="play-btn "><a class="popup-video" href="https://www.youtube.com/watch?v=KMc6DyEJp04"><i class="fas fa-play"></i></a></div>
+                <div class="play-btn "><a class="popup-video" href="https://youtu.be/JL9wmiBRG0A"><i class="fas fa-play"></i></a></div>
             </div>
             </div>
         </div>
         <!-- Arrow -->
         <div class="thumb-content-box">
             <div class="thumb-content">
-                <h3>Next Video</h3>
+                <h3>了解商品</h3>
                 <a href="#"> <i class="flaticon-arrow"></i></a>
             </div>
         </div>
@@ -284,22 +178,22 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="single-method mb-40">
                         <i class="ti-package"></i>
-                        <h6>Free Shipping Method</h6>
-                        <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                        <h6>100元起免運</h6>
+                        <p>從新莊到新加坡，從淡水到水星，100元起免運.</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="single-method mb-40">
                         <i class="ti-unlock"></i>
-                        <h6>Secure Payment System</h6>
-                        <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                        <h6>交易過程保證安全</h6>
+                        <p>交易密鑰使用100台量子電腦來加密，需3兆年才能破解</p>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="single-method mb-40">
                         <i class="ti-reload"></i>
-                        <h6>Secure Payment System</h6>
-                        <p>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</p>
+                        <h6>多元支付方式</h6>
+                        <p>從虛擬貨幣到貝殼，各朝代的貨幣我們都收.</p>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ class OrderSeeder extends Seeder
         //刪除已有資料
         Order::truncate();
         //建立新資料
-        $orders = Order::factory()->times(1000)->make();
+        $orders = Order::factory()->times(100)->make();
         //dd($orders);
 
         $products = Product::get();
