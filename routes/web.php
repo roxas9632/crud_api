@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
 Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
 Route::get('/shop/products/{product}','App\Http\Controllers\SiteController@renderProductDetailPage');
+Route::post('/shop/addcart/{product}','App\Http\Controllers\SiteController@renderCartPage');
 Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
 
 Route::group(['prefix' => 'admin'], function () {
@@ -34,4 +35,6 @@ Route::get('/file',function(){
 
 //API前端串接範例
 Route::view('/posts','posts');
+
+Route::view('/login','login');
 

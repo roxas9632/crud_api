@@ -15,12 +15,12 @@ class SiteController extends Controller
         return view('shop.index',compact('prods_desc','prods_hotted'));
     }
 
-    public function renderProductDetailPage()
+    public function renderProductDetailPage(Request $request, Product $product)
     {
-        return view('shop.product_detail');
+        return view('shop.product_detail',compact('product'));
     }
 
-    public function renderCartPage()
+    public function renderCartPage(Request $request,Product $product)
     {
         return view('shop.cart');
     }
