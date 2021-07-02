@@ -91,51 +91,13 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>保證全部正貨，如有假貨再多送你一百件(不保證為正貨)<br><br>此店所購買商品均用愛發電，如果不動了表示家人正在想你，並非產品故障，請顧客注意!</p>
+                                        <p>{!! setting('site.quality_grant') !!}</p>
                                 </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Quick Links</h4>
-                                <ul>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#"> Offers & Discounts</a></li>
-                                    <li><a href="#"> Get Coupon</a></li>
-                                    <li><a href="#">  Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>New Products</h4>
-                                <ul>
-                                    <li><a href="#">Woman Cloth</a></li>
-                                    <li><a href="#">Fashion Accessories</a></li>
-                                    <li><a href="#"> Man Accessories</a></li>
-                                    <li><a href="#"> Rubber made Toys</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Support</h4>
-                                <ul>
-                                    <li><a href="#">Frequently Asked Questions</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Report a Payment Issue</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {{ menu('frontend_footer','menus.footer_menu') }}
                 </div>
                 <!-- Footer bottom -->
                 <div class="row align-items-center">

@@ -57,7 +57,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                                 <div class="single-popular-items mb-50 text-center">
                                     <div class="popular-img">
-                                        <img src="{{ $prod->pic }}" alt="{{ $prod->name }}">
+                                        <img src="{{ $prod->picUrl }}" alt="{{ $prod->name }}">
                                         <div class="img-cap">
                                             <span>加入購物車</span>
                                         </div>

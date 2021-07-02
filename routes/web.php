@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::view('posts','posts');
-Route::get('shop','App\Http\Controllers\SiteController@renderShopPage');
+Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
 Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('file',function(){
+//顯示PDF範例
+Route::get('/file',function(){
     $file= public_path(). "/storage/files/1.pdf"; //完整路徑
     return response()->file($file);
 });
 
-Route::view('/demo','demo');
+//API前端串接範例
+Route::view('/posts','posts');
 
-Route::get('shop','App\Http\Controllers\SiteController@renderShopPage');
