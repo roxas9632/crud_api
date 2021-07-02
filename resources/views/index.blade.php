@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                         <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                            <img src="{{ $el_slider->pic }}" alt="{{ $el_slider->title }}" class=" heartbeat">
+                            <img src="{{ $el_slider->picUrl }}" alt="{{ $el_slider->title }}" class=" heartbeat">
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="single-new-pro mb-30 text-center">
                     <div class="product-img">
-                        <img src="{{ $product->pic }}" alt="">
+                        <img src="{{ $product->picUrl }}" alt="">
                     </div>
                     <div class="product-caption">
                         <h3><a href="{{ url('shop/products/' . $product->id) }}">{{ $product->name }}</a></h3>
@@ -66,7 +66,7 @@
             @foreach ($els_gallery as $el)
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-gallery mb-30">
-                    <div class="gallery-img big-img" style="background-image: url({{ $el->pic }});"></div>
+                    <div class="gallery-img big-img" style="background-image: url({{ $el->picUrl }});"></div>
                 </div>
             </div>
             @endforeach
@@ -91,7 +91,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="single-popular-items mb-50 text-center">
                     <div class="popular-img">
-                        <img src="{{ $prod->pic }}" alt="{{ $prod->name }}">
+                        <img src="{{ $prod->picUrl }}" alt="{{ $prod->name }}">
                         <div class="img-cap">
                             <span>加入購物車</span>
                         </div>
@@ -149,14 +149,14 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-10">
                 <div class="choice-watch-img mb-40">
-                    <img src="{{ $best_prods[0]->pic }}" alt="{{ $best_prods[0]->name }}">
+                    <img src="{{ $best_prods[0]->picUrl }}" alt="{{ $best_prods[0]->name }}">
                 </div>
             </div>
         </div>
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-6 col-md-6 col-sm-10">
                 <div class="choice-watch-img mb-40">
-                    <img src="{{ $best_prods[1]->pic }}" alt="{{ $best_prods[1]->name }}">
+                    <img src="{{ $best_prods[1]->picUrl }}" alt="{{ $best_prods[1]->name }}">
                 </div>
             </div>
             <div class="col-lg-5 col-md-6">
@@ -170,35 +170,7 @@
     </div>
 </div>
 <!-- Watch Choice  End-->
-<!--? Shop Method Start-->
-<div class="shop-method-area">
-    <div class="container">
-        <div class="method-wrapper">
-            <div class="row d-flex justify-content-between">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-method mb-40">
-                        <i class="ti-package"></i>
-                        <h6>100元起免運</h6>
-                        <p>從新莊到新加坡，從淡水到水星，100元起免運.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-method mb-40">
-                        <i class="ti-unlock"></i>
-                        <h6>交易過程保證安全</h6>
-                        <p>交易密鑰使用100台量子電腦來加密，需3兆年才能破解</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-method mb-40">
-                        <i class="ti-reload"></i>
-                        <h6>多元支付方式</h6>
-                        <p>從虛擬貨幣到貝殼，各朝代的貨幣我們都收.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Shop Method End-->
+
+@include('includes.spec',['els' => $els_spec])
+
 @stop

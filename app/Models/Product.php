@@ -28,12 +28,12 @@ class Product extends Model
         return $query->where('enabled',true)->orderBy('price','asc');
     }
 
-    public function getPicAttribute($value)
+    public function getPicUrlAttribute()
     {
-        if(!str_starts_with($value, 'https')){
-            return Voyager::image($value);
+        if(!str_starts_with($this->pic, 'https')){
+            return Voyager::image($this->pic);
         }else{
-            return $value;
+            return $this->pic;
         }
     }
 

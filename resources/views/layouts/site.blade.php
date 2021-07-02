@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                                        <p>保證全部正貨，如有假貨再多送你一百件(不保證為正貨)<br><br>此店所購買商品均用愛發電，如果不動了表示家人正在想你，並非產品故障，請顧客注意!</p>
                                 </div>
                                 </div>
                             </div>

@@ -14,8 +14,12 @@ class Element extends Model
         return $query->where('enabled',true)->orderBy('sort','asc');
     }
 
-    public function getPicAttribute($value)
+    public function getPicUrlAttribute()
     {
-        return Voyager::image($value);
+        if(!str_starts_with($this->pic, 'https')){
+            return Voyager::image($this->pic);
+        }else{
+            return $this->pic;
+        }
     }
 }
