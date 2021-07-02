@@ -110,7 +110,7 @@
         <!-- Button -->
         <div class="row justify-content-center">
             <div class="room-btn pt-70">
-                <a href="catagori.html" class="btn view-btn1">看更多商品</a>
+                <a href="{{ url('/shop') }}" class="btn view-btn1">看更多商品</a>
             </div>
         </div>
     </div>
@@ -122,15 +122,15 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
             <div class="video-wrap">
-                <div class="play-btn "><a class="popup-video" href="https://youtu.be/JL9wmiBRG0A"><i class="fas fa-play"></i></a></div>
+                <div class="play-btn "><a class="popup-video" href="{{ $el_video->video }}"><i class="{{ $el_video->icon }}"></i></a></div>
             </div>
             </div>
         </div>
         <!-- Arrow -->
         <div class="thumb-content-box">
             <div class="thumb-content">
-                <h3>了解商品</h3>
-                <a href="#"> <i class="flaticon-arrow"></i></a>
+                <h3>{{ $el_video->title }}</h3>
+                <a href="{{ $el_video->url }}"> <i class="flaticon-arrow"></i></a>
             </div>
         </div>
     </div>
