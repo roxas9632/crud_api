@@ -21,6 +21,7 @@ class SiteController extends Controller
         $el_news_top = Element::where('page','index')->where('position','news_top')->enabled()->first();
         $prod_news = Product::where('hoted',true)->orderBy('created_at','desc')->take(6)->get();
         $el_video = Element::where('page','index')->where('position','video')->enabled()->first();
-        return view('index',compact('el_slider','els_gallery','products','el_news_top','prod_news','el_video'));
+        $best_prods = Product::where('hoted',true)->orderBy('price','desc')->take(2)->get();
+        return view('index',compact('el_slider','els_gallery','products','el_news_top','prod_news','el_video','best_prods'));
     }
 }

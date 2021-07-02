@@ -36,4 +36,9 @@ class Product extends Model
             return $value;
         }
     }
+
+    public function getUrlAttribute()
+    {
+        return url('/shop/products/' . $this->id);
+    }
 }
