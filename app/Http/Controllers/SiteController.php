@@ -22,7 +22,17 @@ class SiteController extends Controller
 
     public function renderCartPage(Request $request,Product $product)
     {
-        return view('shop.cart');
+        \Cart::session(2)->add([
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => 1,
+            'attributes' => [],
+            'associatedModel' => $product
+        ]);
+        $items_cart = \Cart::session(2)->getContent();
+        $total = \Cart::session(2)->getTotal();
+        return view('shop.cart',compact('items_cart','total'));
     }
 
     public function renderHomePage()

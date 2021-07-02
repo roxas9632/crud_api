@@ -44,7 +44,7 @@
                             <p>${{ $product->price }}</p>
                         </div>
                     <div class="add_to_cart">
-                        <a href="#" class="btn_3">加入購物車</a>
+                        <a href="{{ url('/shop/addcart/'.$product->id) }}" class="btn_3">加入購物車</a>
                     </div>
                     </div>
                 </div>
