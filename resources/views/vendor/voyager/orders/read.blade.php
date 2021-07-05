@@ -134,10 +134,13 @@
                         @endif
                     @endforeach
 
-                    <p>
-                        <h3>訂單明細</h3>
+                    <div class="panel-heading" style="border-bottom:0;">
+                        <h3 class="panel-title">訂單明細</h3>
+                    </div>
+
+                    <div class="panel-body" style="padding-top:0;">
                         {{ $dataTypeContent->orderDetail }}
-                    </p>
+                    </div>
 
                 </div>
             </div>
