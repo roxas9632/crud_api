@@ -76,6 +76,7 @@
         <!-- Header End -->
     </header>
     <main>
+
         @include('flash::message')
         @yield('body')
     </main>
@@ -175,7 +176,11 @@
     <script src="{{ asset('js/main.js') }}"></script>
 
     <script>
-        $('div.alert').not('.alertimportant').delay(3000).fadeOut(350);
+        <!-- Flash Message Overlay會用到，需保留 -->
+        $('#flash-overlay-modal').modal();
+
+        <!-- Flash Message 3秒之後消失，非必須 -->
+        $('div.alert').delay(3000).fadeOut(350);
     </script>
 
 </body>

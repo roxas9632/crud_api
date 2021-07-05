@@ -88,8 +88,14 @@ class SiteController extends Controller
         //清空購物車
         \Cart::session(2)->clear();
         //返回首頁，並且要有訂單已完成的提示
-        flash('訂單付款成功!')->success();
+        flash()->overlay('訂單付款成功!', '訂單狀態');
         return redirect('/shop');
+    }
+
+    public function renderContactPage()
+    {
+        $sources = json_decode(setting('site.sources'),true);
+        return view('contact',compact('sources'));
     }
 
 }
