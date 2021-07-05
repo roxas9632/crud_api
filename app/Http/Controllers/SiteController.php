@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Http\Model\BI;
 use App\Models\Element;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -65,6 +67,28 @@ class SiteController extends Controller
         $total = $subtotal + $transport_fee;
 
         return view('shop.checkout',compact('cart_items','subtotal','transport_fee','total'));
+    }
+
+    public function checkout(Request $request){
+        //轉址到第三方金流
+
+        //建立訂單
+        $data = $request->only(['receive_name','receive_phone','receive_address','type','remark','',
+                        'pay_type']);
+        $data['user_id'] = 2;
+        $order = Order::create($data);
+        $cart_items = \Cart::session(2)->getContent();
+        foreach ($cart_items as $item) {
+            $newOrderProduct = new OrderProduct();
+            $newOrderProduct->order_id = $order->id;
+            $newOrderProduct->product_id = $item->associatedModel->id;
+            $newOrderProduct->qty = $item->quantity;
+            $newOrderProduct->save();
+        }
+        //清空購物車
+        \Cart::session(2)->clear();
+        //返回首頁，並且要有訂單已完成的提示
+        return redirect('/');
     }
 
 }

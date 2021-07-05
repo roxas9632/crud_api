@@ -20,66 +20,31 @@
                 <div class="container">
                     <div class="billing_details">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <form class="row contact_form" action="{{ url('checkout') }}" method="post" novalidate="novalidate">
+                                @csrf
+                                <div class="col-lg-8">
                                 <h3>訂單明細</h3>
-                                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                                     <div class="col-md-6 form-group p_star">
-                                        <input type="text" class="form-control" id="first" name="name" />
-                                        <span class="placeholder" data-placeholder="First name"></span>
-                                    </div>
-                                    <div class="col-md-6 form-group p_star">
-                                        <input type="text" class="form-control" id="last" name="name" />
-                                        <span class="placeholder" data-placeholder="Last name"></span>
-                                    </div>
-                                    <div class="col-md-12 form-group">
-                                        <input type="text" class="form-control" id="company" name="company" placeholder="Company name" />
+                                        <input type="text" class="form-control" id="receive_name" name="receive_name" />
+                                        <span class="placeholder" data-placeholder="姓名"></span>
                                     </div>
                                     <div class="col-md-6 form-group p_star">
-                                        <input type="text" class="form-control" id="number" name="number" />
-                                        <span class="placeholder" data-placeholder="Phone number"></span>
-                                    </div>
-                                    <div class="col-md-6 form-group p_star">
-                                        <input type="text" class="form-control" id="email" name="compemailany" />
-                                        <span class="placeholder" data-placeholder="Email Address"></span>
+                                        <input type="text" class="form-control" id="receive_phone" name="receive_phone" />
+                                        <span class="placeholder" data-placeholder="電話"></span>
                                     </div>
                                     <div class="col-md-12 form-group p_star">
-                                        <select class="country_select">
-                                            <option value="tw">Taiwan</option>
-                                            <option value="en">USA</option>
-                                            <option value="jp">Japan</option></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control" id="add1" name="add1" />
-                                        <span class="placeholder" data-placeholder="Address line 01"></span>
-                                    </div>
-                                    <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control" id="add2" name="add2" />
-                                        <span class="placeholder" data-placeholder="Address line 02"></span>
-                                    </div>
-                                    <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control" id="city" name="city" />
-                                        <span class="placeholder" data-placeholder="請選擇縣市"></span>
-                                    </div>
-                                    <div class="col-md-12 form-group p_star">
-                                        <select class="country_select">
-                                            <option value="1">台北</option>
-                                            <option value="2">台中</option>
-                                            <option value="4">高雄</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 form-group">
-                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="郵遞區號" />
+                                        <input type="textarea" class="form-control" id="receive_address" name="receive_address" />
+                                        <span class="placeholder" data-placeholder="請輸入地址"></span>
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <div class="creat_account">
-                                            <h3>物流資訊</h3>
-                                            <input type="checkbox" id="f-option3" name="selector" />
-                                            <label for="f-option3">寄到其他地方?</label>
+                                            <h3>訂單類型</h3>
+                                            <input type="hidden" id="type" name="type" value="online"/>
+                                            <label for="f-option3">線上訂單</label>
                                         </div>
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
+                                        <textarea class="form-control" name="remark" id="remark" rows="1" placeholder="備註"></textarea>
                                     </div>
-                                </form>
+
                             </div>
                             <div class="col-lg-4">
                                 <div class="order_box">
@@ -123,7 +88,7 @@
                                     </ul>
                                     <div class="payment_item active">
                                         <div class="radion_btn">
-                                            <input type="radio" id="f-option6" name="selector" />
+                                            <input type="radio" id="pay_type" name="pay_type" value="credit" checked>
                                             <label for="f-option6">信用卡 </label>
                                             <img src="img/product/single-product/card.jpg" alt="" />
                                             <div class="check"></div>
@@ -135,8 +100,9 @@
                                         <label for="f-option4">我同意這些合約要求 </label>
                                         <a href="#">交易合約內容*</a>
                                     </div>
-                                    <a class="btn_3" href="#">前往付款</a>
+                                    <input class="btn_3" type="submit" value="前往付款">
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>

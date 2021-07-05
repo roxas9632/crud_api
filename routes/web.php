@@ -23,6 +23,8 @@ Route::get('/shop/products/{product}','App\Http\Controllers\SiteController@rende
 Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
 Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
 Route::get('/checkout','App\Http\Controllers\SiteController@renderCheckoutPage');
+Route::post('/checkout','App\Http\Controllers\SiteController@checkout');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
