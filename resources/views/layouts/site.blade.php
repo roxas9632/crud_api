@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
@@ -75,6 +76,7 @@
         <!-- Header End -->
     </header>
     <main>
+        @include('flash::message')
         @yield('body')
     </main>
     <footer>
@@ -171,6 +173,10 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script>
+        $('div.alert').not('.alertimportant').delay(3000).fadeOut(350);
+    </script>
 
 </body>
 </html>

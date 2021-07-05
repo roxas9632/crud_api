@@ -88,7 +88,10 @@ class SiteController extends Controller
         //清空購物車
         \Cart::session(2)->clear();
         //返回首頁，並且要有訂單已完成的提示
-        return redirect('/');
+        flash('訂單付款成功!')->success();
+        return redirect('/shop');
     }
 
 }
+
+
