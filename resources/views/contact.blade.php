@@ -66,9 +66,13 @@
                         <h2 class="contact-title">需要協助?</h2>
                     </div>
                     <div class="col-lg-8">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div style="color:red">{{$error}}</div>
+                            @endforeach
+                        @endif
                             {!! Form::open(['url'=> url('contacts'),'class'=>'form-contact contact_form']) !!}
                             <div class="row">
-
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         {!! Form::text('name', null, ['placeholder'=>'輸入大名','class'=>'form-control valid']) !!}

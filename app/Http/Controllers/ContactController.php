@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -32,9 +34,20 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+        //驗證資料是否合法
+
+        //如果合法就做後續處理，反之就回去並傳回舊資料
+        $data = $request->only(['name','email','source','subject','message']);
+        $contact = Contact::create($data);
+        if($contact){
+            flash('聯絡單建立完成')->success();
+        }else{
+            flash('聯絡單建立失敗')->error();
+        }
+        return redirect('/contact');
+
     }
 
     /**
