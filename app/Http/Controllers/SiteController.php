@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Model\BI;
 use App\Models\Element;
 use App\Models\Product;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -53,6 +55,16 @@ class SiteController extends Controller
         $el_video = Element::where('page','index')->where('position','video')->enabled()->first();
         $best_prods = Product::where('hoted',true)->orderBy('price','desc')->take(2)->get();
         return view('index',compact('el_slider','els_gallery','products','el_news_top','prod_news','el_video','best_prods'));
+    }
+
+    public function renderCheckoutPage()
+    {
+        $cart_items = \Cart::session(2)->getContent();
+        $subtotal = \Cart::session(2)->getSubTotal();
+        $transport_fee = BI::calculTransportFee($subtotal);
+        $total = $subtotal + $transport_fee;
+
+        return view('shop.checkout',compact('cart_items','subtotal','transport_fee','total'));
     }
 
 }
