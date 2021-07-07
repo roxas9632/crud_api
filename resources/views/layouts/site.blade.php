@@ -61,7 +61,7 @@
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
-                                <li> <a href="login.html"><span class="flaticon-user"></span></a></li>
+                                <li> <a href="{{ url('/login') }}"><span class="flaticon-user"></span></a></li>
                                 <li><a href="{{ url('shop/cart') }}"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>

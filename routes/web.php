@@ -21,15 +21,15 @@ Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
 Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
 Route::get('/shop/products/{product}','App\Http\Controllers\SiteController@renderProductDetailPage');
 Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
-//Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
+Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
 Route::get('/checkout','App\Http\Controllers\SiteController@renderCheckoutPage');
 Route::post('/checkout','App\Http\Controllers\SiteController@checkout');
 Route::get('/contact','App\Http\Controllers\SiteController@renderContactPage');
 Route::resource('/contacts','App\Http\Controllers\ContactController');
 
-// Route::group(['prefix' => 'admin'], function () {
-//     Voyager::routes();
-// });
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 
 //顯示PDF範例
 Route::get('/file',function(){
@@ -40,7 +40,7 @@ Route::get('/file',function(){
 //API前端串接範例
 Route::view('/posts','posts');
 
-Route::view('/login','login');
+//Route::view('/login','login');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
