@@ -85,9 +85,10 @@ class SiteController extends Controller
         return view('blogs.index',compact('posts','categories','posts_recent','tags'));
     }
 
-    public function renderBlogDetailPage()
+    public function renderBlogDetailPage(Post $post)
     {
-        return view('blogs.show');
+        $categories = Category::where('enabled',true)->orderBy('sort','asc')->get();
+        return view('blogs.show',compact('post','categories'));
     }
 
     public function checkout(Request $request){

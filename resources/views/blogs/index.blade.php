@@ -26,14 +26,14 @@
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="{{ $post->picUrl }}" alt="{{ $post->title }}">
-                                    <a href="{{ url('blogs/' . $post->id) }}" class="blog_item_date">
+                                    <a href="{{ url('posts/' . $post->id) }}" class="blog_item_date">
                                         <h3>{{ $post->created_at->day }}</h3>
                                         <p>{{ $post->created_at->monthName }}</p>
                                     </a>
                                 </div>
 
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
+                                    <a class="d-inline-block" href="{{ url('posts/' . $post->id) }}">
                                         <h2>{{ $post->title }}</h2>
                                     </a>
                                     <p>{!! substr($post->content, 0, 100); !!} ...</p>
@@ -86,19 +86,7 @@
                                 </form>
                             </aside>
 
-                            <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">分類</h4>
-                                <ul class="list cat-list">
-                                    @foreach ($categories as $category)
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>{{ $category->title }}</p>
-                                            <p>({{ $category->posts()->count() }})</p>
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </aside>
+                            @include('partials.categories',['categories' => $categories])
 
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">最新文章</h3>
