@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::view('demo','demo');
+
 //顯示PDF範例
 Route::get('/file',function(){
     $file= public_path(). "/storage/files/1.pdf"; //完整路徑

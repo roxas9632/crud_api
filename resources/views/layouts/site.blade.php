@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -196,6 +196,6 @@
         <!-- Flash Message 3秒之後消失，非必須 -->
         $('div.alert').delay(3000).fadeOut(350);
     </script>
-
+    @livewireScripts
 </body>
 </html>

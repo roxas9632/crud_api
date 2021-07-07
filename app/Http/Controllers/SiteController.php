@@ -12,10 +12,18 @@ use App\Models\Category;
 use Darryldecode\Cart\Cart;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use TsaiYiHua\ECPay\Checkout;
 use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
+    protected $checkout;
+
+    public function __construct(Checkout $checkout)
+    {
+        $this->checkout = $checkout;
+    }
+
     public function renderShopPage()
     {
         $prods_desc = Product::where('enabled',true)->orderBy('price','desc')->get();
@@ -92,13 +100,12 @@ class SiteController extends Controller
     }
 
     public function checkout(Request $request){
-        //轉址到第三方金流
-
         //建立訂單
         $user = Auth::user();
         $data = $request->only(['receive_name','receive_phone','receive_address','type','remark','',
                         'pay_type']);
         $data['user_id'] = $user->id;
+        $data['status'] = 'created';
         $order = Order::create($data);
         $cart_items = \Cart::session($user->id)->getContent();
         foreach ($cart_items as $item) {
@@ -110,9 +117,21 @@ class SiteController extends Controller
         }
         //清空購物車
         \Cart::session($user->id)->clear();
+
         //返回首頁，並且要有訂單已完成的提示
-        flash()->overlay('訂單付款成功!', '訂單狀態');
-        return redirect('/shop');
+        // flash()->overlay('訂單付款成功!', '訂單狀態');
+        // return redirect('/shop');
+
+        //轉址到第三方金流
+        dd(\Cart::session($user->id)->getTotal());
+        $formData = [
+            'UserId' => $user->id, // 用戶ID , Optional
+            'ItemDescription' => 'goblinlab',
+            'ItemName' => 'test',
+            'TotalAmount' => \Cart::session($user->id)->getTotal(),
+            'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
+        ];
+        return $this->checkout->setPostData($formData)->send();
     }
 
     public function renderContactPage()
