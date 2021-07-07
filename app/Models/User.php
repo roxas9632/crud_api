@@ -10,8 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use TCG\Voyager\Traits\VoyagerUser;
+use TCG\Voyager\Contracts\User as UserContract;
 
-class User extends Authenticatable
+class User extends Authenticatable implements UserContract
 {
     use VoyagerUser;
     use HasApiTokens;
