@@ -61,7 +61,21 @@
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
+                                @if(!Auth::check())
                                 <li> <a href="{{ url('/login') }}"><span class="flaticon-user"></span></a></li>
+                                @else
+                                <li><a href="{{ url('/user/profile') }}"><span>歡迎,{{ Auth::user()->name }}</span></a></li>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                        <span>登出</span>
+                                    </a>
+                                </form>
+                                @endif
+
                                 <li><a href="{{ url('shop/cart') }}"><span class="flaticon-shopping-cart"></span></a> </li>
                             </ul>
                         </div>

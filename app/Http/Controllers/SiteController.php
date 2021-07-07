@@ -9,6 +9,7 @@ use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -26,16 +27,18 @@ class SiteController extends Controller
 
     public function renderCartPage()
     {
-        $items_cart = \Cart::session(2)->getContent();
-        $total = \Cart::session(2)->getTotal();
+        $user = Auth::user();
+        $items_cart = \Cart::session($user->id)->getContent();
+        $total = \Cart::session($user->id)->getTotal();
         return view('shop.cart',compact('items_cart','total'));
     }
 
 
     public function addCart(Request $request,Product $product)
     {
-        if(isset($product)){
-            \Cart::session(2)->add([
+        $user = Auth::user();
+        if(isset($product) && isset($user)){
+            \Cart::session($user->id)->add([
                 'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
@@ -61,8 +64,9 @@ class SiteController extends Controller
 
     public function renderCheckoutPage()
     {
-        $cart_items = \Cart::session(2)->getContent();
-        $subtotal = \Cart::session(2)->getSubTotal();
+        $user = Auth::user();
+        $cart_items = \Cart::session($user->id)->getContent();
+        $subtotal = \Cart::session($user->id)->getSubTotal();
         $transport_fee = BI::calculTransportFee($subtotal);
         $total = $subtotal + $transport_fee;
 
@@ -73,11 +77,12 @@ class SiteController extends Controller
         //轉址到第三方金流
 
         //建立訂單
+        $user = Auth::user();
         $data = $request->only(['receive_name','receive_phone','receive_address','type','remark','',
                         'pay_type']);
-        $data['user_id'] = 2;
+        $data['user_id'] = $user->id;
         $order = Order::create($data);
-        $cart_items = \Cart::session(2)->getContent();
+        $cart_items = \Cart::session($user->id)->getContent();
         foreach ($cart_items as $item) {
             $newOrderProduct = new OrderProduct();
             $newOrderProduct->order_id = $order->id;
@@ -86,7 +91,7 @@ class SiteController extends Controller
             $newOrderProduct->save();
         }
         //清空購物車
-        \Cart::session(2)->clear();
+        \Cart::session($user->id)->clear();
         //返回首頁，並且要有訂單已完成的提示
         flash()->overlay('訂單付款成功!', '訂單狀態');
         return redirect('/shop');

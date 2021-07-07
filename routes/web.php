@@ -18,14 +18,20 @@ Route::get('/', function () {
 });
 
 Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
-Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
+
 Route::get('/shop/products/{product}','App\Http\Controllers\SiteController@renderProductDetailPage');
-Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
+
 Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
-Route::get('/checkout','App\Http\Controllers\SiteController@renderCheckoutPage');
-Route::post('/checkout','App\Http\Controllers\SiteController@checkout');
+
 Route::get('/contact','App\Http\Controllers\SiteController@renderContactPage');
 Route::resource('/contacts','App\Http\Controllers\ContactController');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout','App\Http\Controllers\SiteController@renderCheckoutPage');
+    Route::post('/checkout','App\Http\Controllers\SiteController@checkout');
+    Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
+    Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
