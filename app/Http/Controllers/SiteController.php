@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use App\Models\Post;
 use App\Models\Order;
 use App\Http\Model\BI;
 use App\Models\Element;
 use App\Models\Product;
+use App\Models\Category;
 use Darryldecode\Cart\Cart;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
@@ -71,6 +74,20 @@ class SiteController extends Controller
         $total = $subtotal + $transport_fee;
 
         return view('shop.checkout',compact('cart_items','subtotal','transport_fee','total'));
+    }
+
+    public function renderBlogPage()
+    {
+        $posts = Post::where('enabled',true)->orderBy('sort','asc')->orderBy('created_at','desc')->paginate(5);
+        $posts_recent = Post::where('enabled',true)->orderBy('sort','asc')->orderBy('created_at','desc')->take(5)->get();
+        $categories = Category::where('enabled',true)->orderBy('sort','asc')->get();
+        $tags = Tag::orderBy('sort','asc')->get();
+        return view('blogs.index',compact('posts','categories','posts_recent','tags'));
+    }
+
+    public function renderBlogDetailPage()
+    {
+        return view('blogs.show');
     }
 
     public function checkout(Request $request){

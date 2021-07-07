@@ -44,7 +44,9 @@ Route::get('/file',function(){
 });
 
 //API前端串接範例
-Route::view('/posts','posts');
+//Route::view('/posts','posts');
+Route::get('/posts','App\Http\Controllers\SiteController@renderBlogPage');
+Route::get('/posts/{post}','App\Http\Controllers\SiteController@renderBlogDetailPage');
 
 //Route::view('/login','login');
 

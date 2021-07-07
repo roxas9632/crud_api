@@ -43,9 +43,29 @@ class Post extends Model
         return $data;
     }
 
-    public function getPicAttribute($value)
+    public function getTagsStringAttribute()
     {
-        return Voyager::image($value);
+        $string = '';
+        $tags = $this->tags()->get();
+        $len = count($tags);
+        $index = 0;
+        foreach($tags as $tag){
+            $string = $string . $tag->title;
+            if($index != $len-1){
+                $string = $string . ',';
+                $index ++;
+            }
+        }
+        return $string;
+    }
+
+    public function getPicUrlAttribute()
+    {
+        if(!str_starts_with($this->pic, 'https')){
+            return Voyager::image($this->pic);
+        }else{
+            return $this->pic;
+        }
     }
 
     public function scopeEnabled($query)
