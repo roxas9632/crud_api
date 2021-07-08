@@ -21,9 +21,8 @@
                     <div class="select-this">
                         <form action="#">
                             <div class="select-itms">
-                                <input type="text" wire:model="qty">
-                                {{ $qty }}
-                                <select name="select" wire:model="qty">
+                                {!! Form::text('key', null, ['wire:model'=>'key','placeholder'=>'請輸入關鍵字']) !!}
+                                <select wire:model="qty">
                                     <option value="3">每頁 3 筆</option>
                                     <option value="6">每頁 6 筆</option>
                                     <option value="9">每頁 9 筆</option>

@@ -11,6 +11,7 @@ class ShopGrid extends Component
     public $prods_desc;
     public $prods_hotted;
     public $qty = 3;
+    public $key = '';
 
     public function render()
     {
@@ -27,10 +28,13 @@ class ShopGrid extends Component
         $this->init();
     }
 
-    public function init()
+    public function init($qty = null)
     {
-        $this->prods = Product::take($this->qty)->get();
-        $this->prods_desc = Product::where('enabled',true)->orderBy('price','desc')->take($this->qty)->get();
-        $this->prods_hotted = Product::where('enabled',true)->where('hoted',true)->take($this->qty)->get();
+        if($qty != null){
+            $this->qty = $qty;
+        }
+        $this->prods = Product::key($this->key)->take($this->qty)->get();
+        $this->prods_desc = Product::where('enabled',true)->key($this->key)->orderBy('price','desc')->take($this->qty)->get();
+        $this->prods_hotted = Product::where('enabled',true)->where('hoted',true)->key($this->key)->take($this->qty)->get();
     }
 }

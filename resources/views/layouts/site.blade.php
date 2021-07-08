@@ -175,7 +175,7 @@
 
     <!-- Scrollup, nice-select, sticky -->
     <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script> --}}
     <script src="{{ asset('js/jquery.sticky.js') }}"></script>
 
     <!-- contact js -->

@@ -28,6 +28,13 @@ class Product extends Model
         return $query->where('enabled',true)->orderBy('price','asc');
     }
 
+    public function scopeKey($query,$key)
+    {
+        if($key != null && strlen($key) > 0){
+            return $query->where('name','like',"%$key%");
+        }
+    }
+
     public function getPicUrlAttribute()
     {
         if(!str_starts_with($this->pic, 'https')){

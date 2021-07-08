@@ -119,7 +119,7 @@ class SiteController extends Controller
         //轉址到第三方金流
         $formData = [
             'UserId' => $user->id, // 用戶ID , Optional
-            'ItemDescription' => 'goblinlab',
+            'ItemDescription' => $order->order_detail,
             'ItemName' => 'test',
             'TotalAmount' => \Cart::session($user->id)->getTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
@@ -140,14 +140,13 @@ class SiteController extends Controller
 
     public function checkoutCallback(Request $request){
         $response = $request->all();
-        dd($response);
         if($response['RtnCode'] == 1){
-            $order = Order::find($response['item']['CustomField1']);
-            $order->paid = true;
-            if($response->items['PaymentType'] == 'Credit_CreditCard'){
+            $order = Order::find($response['CustomField1']);
+            $order->paided = true;
+            if($response['PaymentType'] == 'Credit_CreditCard'){
                 $order->pay_type = 'credit';
             }
-            $order->paid_serial = $response->items['TradeNo'];
+            $order->paid_serial = $response['TradeNo']; //綠界訂單編號
             $order->save();
             flash()->overlay('訂單付款成功!', '付款結果');
         }else{
