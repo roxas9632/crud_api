@@ -115,22 +115,20 @@ class SiteController extends Controller
             $newOrderProduct->qty = $item->quantity;
             $newOrderProduct->save();
         }
-        //清空購物車
-        \Cart::session($user->id)->clear();
-
-        //返回首頁，並且要有訂單已完成的提示
-        // flash()->overlay('訂單付款成功!', '訂單狀態');
-        // return redirect('/shop');
 
         //轉址到第三方金流
-        dd(\Cart::session($user->id)->getTotal());
         $formData = [
             'UserId' => $user->id, // 用戶ID , Optional
             'ItemDescription' => 'goblinlab',
             'ItemName' => 'test',
             'TotalAmount' => \Cart::session($user->id)->getTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
+            'ReturnURL' => 'http://taoyuan.test/checkout/callback',
+            'CustomField1' => $order->id
         ];
+        //清空購物車
+        \Cart::session($user->id)->clear();
+
         return $this->checkout->setPostData($formData)->send();
     }
 
@@ -138,6 +136,20 @@ class SiteController extends Controller
     {
         $sources = json_decode(setting('site.sources'),true);
         return view('contact',compact('sources'));
+    }
+
+    //金流Call Back
+    public function checkoutCallback(Request $request){
+        $response = $request->all();
+        if($response['status'] == 1){
+            $order = Order::find($response['item']['CustomField1']);
+            $order->paid = true;
+            if($response->items['PaymentType'] == 'Credit_CreditCard'){
+                $order->pay_type = 'credit';
+            }
+            $order->paid_serial = $response->items['TradeNo'];
+            $order->save();
+        }
     }
 
 }
