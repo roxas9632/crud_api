@@ -1,18 +1,21 @@
-<form class="row contact_form" action="{{ url('checkout') }}" method="post" novalidate="novalidate">
+<form class="row contact_form" action="#" method="post" novalidate="novalidate" wire:submit.prevent="submit">
     @csrf
     <div class="col-lg-8">
     <h3>訂單明細</h3>
         <div class="col-md-6 form-group p_star">
-            <input type="text" class="form-control" id="receive_name" name="receive_name" />
-            <span class="placeholder" data-placeholder="姓名"></span>
+            <input type="text" class="form-control"  id="receive_name" name="receive_name" wire:model.defer="name"/>
+            <span class="placeholder" data-placeholder="姓名"></span>{{ $name }}
+            @error('name') <span class="error" style="color:red;">{{ $message }}</span> @enderror
         </div>
         <div class="col-md-6 form-group p_star">
-            <input type="text" class="form-control" id="receive_phone" name="receive_phone" />
+            <input type="text" class="form-control" id="receive_phone" name="receive_phone" wire:model.defer="phone" />
             <span class="placeholder" data-placeholder="電話"></span>
+            @error('phone') <span class="error" style="color:red;">{{ $message }}</span> @enderror
         </div>
         <div class="col-md-12 form-group p_star">
-            <input type="textarea" class="form-control" id="receive_address" name="receive_address" />
+            <input type="textarea" class="form-control" id="receive_address" name="receive_address" wire:model.defer="address"/>
             <span class="placeholder" data-placeholder="請輸入地址"></span>
+            @error('address') <span class="error" style="color:red;">{{ $message }}</span> @enderror
         </div>
         <div class="col-md-12 form-group">
             <div class="creat_account">
