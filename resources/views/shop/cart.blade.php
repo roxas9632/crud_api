@@ -31,31 +31,7 @@
                 </thead>
                 <tbody>
                   @foreach ($items_cart as $item)
-                  <tr>
-                    <td>
-                      <div class="media">
-                        <div class="d-flex">
-                          <img src="{{ $item->associatedModel->picUrl }}" alt="{{ $item->name }}" />
-                        </div>
-                        <div class="media-body">
-                          <p>{{ $item->associatedModel->spec }}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>$ {{ $item->price }}</h5>
-                    </td>
-                    <td>
-                      <div class="product_count">
-                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                        <input class="input-number" type="text" value="{{ $item->quantity }}" min="0" max="10">
-                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>${{ $item->price * $item->quantity }}</h5>
-                    </td>
-                  </tr>
+                    @livewire('cart-item',['item'=>$item])
                   @endforeach
 
                   <tr class="bottom_button">
@@ -70,16 +46,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <h5>總金額</h5>
-                    </td>
-                    <td>
-                      <h5>${{ $total }}</h5>
-                    </td>
-                  </tr>
+                  @livewire('cart-total')
                 </tbody>
               </table>
               <div class="checkout_btn_inner float-right">
