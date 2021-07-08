@@ -36,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout2','App\Http\Controllers\SiteController@checkoutv2');
     Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
     Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
+
+    Route::group(['prefix' => 'member'], function() {
+        Route::get('/orders','App\Http\Controllers\MemberController@showOrders');
+    });
 });
 
 Route::group(['prefix' => 'admin'], function () {

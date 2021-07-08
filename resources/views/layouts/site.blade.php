@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @yield('css')
     @livewireStyles
 </head>
 
@@ -65,6 +66,7 @@
                                 <li> <a href="{{ url('/login') }}"><span class="flaticon-user"></span></a></li>
                                 @else
                                 <li><a href="{{ url('/user/profile') }}"><span>歡迎,{{ Auth::user()->name }}</span></a></li>
+                                <li><a href="{{ url('/member/orders') }}"><span>歷史訂單紀錄</span></a></li>
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
@@ -188,7 +190,7 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-
+    @yield('js')
     <script>
         <!-- Flash Message Overlay會用到，需保留 -->
         $('#flash-overlay-modal').modal();
