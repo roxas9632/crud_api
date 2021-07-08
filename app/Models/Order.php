@@ -20,21 +20,6 @@ class Order extends Model
         return $this->total * 0.05;
     }
 
-    public function getStatusAttribute($value)
-    {
-        if ($value == 'TBC') {
-            return '確認中';
-        } elseif ($value == 'TBP') {
-            return '備餐中';
-        } elseif ($value == 'ALC') {
-            return '備餐完成';
-        } elseif ($value == 'ALD') {
-            return '已出餐';
-        } else {
-            return '已取消';
-        }
-    }
-
     public function getOrderDetailAttribute()
     {
         $products = $this->products;

@@ -57,6 +57,7 @@ class Checkout extends Component
         $data['receive_phone'] = $this->phone;
         $data['receive_address'] = $this->address;
         $data['remark'] = $this->remark;
+        $data['type'] = 'online';
         $data['user_id'] = $user->id;
         $data['status'] = 'created';
         $order = Order::create($data);

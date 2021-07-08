@@ -23,7 +23,7 @@
                 <input type="hidden" id="type" name="type" value="online"/>
                 <label for="f-option3">線上訂單</label>
             </div>
-            <textarea class="form-control" name="remark" id="remark" rows="1" placeholder="備註"></textarea>
+            <textarea class="form-control" name="remark" id="remark" rows="1" placeholder="備註" wire:model.defer="remark"></textarea>
         </div>
 
 </div>
@@ -70,7 +70,7 @@
         <div class="payment_item active">
             <div class="radion_btn">
                 <input type="radio" id="pay_type" name="pay_type" value="credit" checked>
-                <label for="f-option6">信用卡 </label>
+                <label for="f-option6">多元金流方案 </label>
                 <img src="img/product/single-product/card.jpg" alt="" />
                 <div class="check"></div>
             </div>

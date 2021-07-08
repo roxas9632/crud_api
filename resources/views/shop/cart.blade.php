@@ -36,12 +36,13 @@
 
                   <tr class="bottom_button">
                     <td>
-                      <a class="btn_1" href="#">更新購物車</a>
+
                     </td>
                     <td></td>
                     <td></td>
                     <td>
                       <div class="cupon_text float-right">
+                        <input type="text" placeholder="優惠券序號" />&nbsp;
                         <a class="btn_1" href="#">使用優惠券</a>
                       </div>
                     </td>
