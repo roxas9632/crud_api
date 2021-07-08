@@ -39,13 +39,8 @@
 
                     </td>
                     <td></td>
-                    <td></td>
-                    <td>
-                      <div class="cupon_text float-right">
-                        <input type="text" placeholder="優惠券序號" />&nbsp;
-                        <a class="btn_1" href="#">使用優惠券</a>
-                      </div>
-                    </td>
+                    <td colspan="2"> @livewire('coupon')</td>
+
                   </tr>
                   @livewire('cart-total')
                 </tbody>

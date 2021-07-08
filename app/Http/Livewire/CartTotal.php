@@ -20,7 +20,7 @@ class CartTotal extends Component
     }
 
     public function init(){
-        $this->total = \Cart::session(Auth::user()->id)->getTotal();
+        $this->total = \Cart::session(Auth::user()->id)->getSubTotal();
     }
 
     public function updateTotal(){

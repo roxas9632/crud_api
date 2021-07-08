@@ -76,7 +76,7 @@ class Checkout extends Component
             'UserId' => $user->id, // 用戶ID , Optional
             'ItemDescription' => 'product list',
             'ItemName' => $order->order_detail,
-            'TotalAmount' => \Cart::session($user->id)->getTotal(),
+            'TotalAmount' => \Cart::session($user->id)->getSubTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
             'CustomField1' => $order->id,
             'Remark' => $this->remark
