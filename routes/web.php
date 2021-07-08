@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/thank',function(){
+    return view('thank');
+});
+
 Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
 
 Route::get('/shop/products/{product}','App\Http\Controllers\SiteController@renderProductDetailPage');
-
+Route::post('/shop/checkout/callback','App\Http\Controllers\SiteController@checkoutCallback');
 Route::get('/','App\Http\Controllers\SiteController@renderHomePage');
 
 Route::get('/contact','App\Http\Controllers\SiteController@renderContactPage');

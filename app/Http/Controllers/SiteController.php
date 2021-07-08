@@ -22,13 +22,13 @@ class SiteController extends Controller
     public function __construct(Checkout $checkout)
     {
         $this->checkout = $checkout;
+        $this->checkout->setReturnUrl('http://taoyuan.test/shop/checkout/callback');
     }
 
     public function renderShopPage()
     {
-        $prods_desc = Product::where('enabled',true)->orderBy('price','desc')->get();
-        $prods_hotted = Product::where('enabled',true)->where('hoted',true)->get();
-        return view('shop.index',compact('prods_desc','prods_hotted'));
+
+        return view('shop.index');
     }
 
     public function renderProductDetailPage(Request $request, Product $product)
@@ -123,7 +123,7 @@ class SiteController extends Controller
             'ItemName' => 'test',
             'TotalAmount' => \Cart::session($user->id)->getTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
-            'ReturnURL' => 'http://taoyuan.test/checkout/callback',
+            'OrderResultURL' => 'http://taoyuan.test/shop/checkout/callback',
             'CustomField1' => $order->id
         ];
         //清空購物車
@@ -138,10 +138,10 @@ class SiteController extends Controller
         return view('contact',compact('sources'));
     }
 
-    //金流Call Back
     public function checkoutCallback(Request $request){
         $response = $request->all();
-        if($response['status'] == 1){
+        dd($response);
+        if($response['RtnCode'] == 1){
             $order = Order::find($response['item']['CustomField1']);
             $order->paid = true;
             if($response->items['PaymentType'] == 'Credit_CreditCard'){
@@ -149,7 +149,13 @@ class SiteController extends Controller
             }
             $order->paid_serial = $response->items['TradeNo'];
             $order->save();
+            flash()->overlay('訂單付款成功!', '付款結果');
+        }else{
+            flash()->overlay('唉唷，訂單付款未成功!', '付款結果');
         }
+
+        //返回首頁，並且要有訂單是否完成的提示
+        return redirect('/shop');
     }
 
 }
