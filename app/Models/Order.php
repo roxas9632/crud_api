@@ -46,11 +46,6 @@ class Order extends Model
         return $content;
     }
 
-    public function setReceiveNameAttribute($value)
-    {
-        $this->attributes['receive_name'] = 'Name:' . $value;
-    }
-
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot(['qty'])->withTimestamps();

@@ -33,6 +33,7 @@ Route::resource('/contacts','App\Http\Controllers\ContactController');
 Route::middleware(['auth'])->group(function () {
     Route::get('/checkout','App\Http\Controllers\SiteController@renderCheckoutPage');
     Route::post('/checkout','App\Http\Controllers\SiteController@checkout');
+    Route::get('/checkout2','App\Http\Controllers\SiteController@checkoutv2');
     Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
     Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
 });

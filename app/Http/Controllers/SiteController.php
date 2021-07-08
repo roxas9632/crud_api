@@ -132,6 +132,11 @@ class SiteController extends Controller
         return $this->checkout->setPostData($formData)->send();
     }
 
+    public function checkoutv2(Request $request){
+        $formData = session()->get('formData');
+        return $this->checkout->setPostData($formData)->send();
+    }
+
     public function renderContactPage()
     {
         $sources = json_decode(setting('site.sources'),true);

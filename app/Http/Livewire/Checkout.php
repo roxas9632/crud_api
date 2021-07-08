@@ -20,11 +20,13 @@ class Checkout extends Component
     public $name;
     public $phone;
     public $address;
+    public $remark;
 
     protected $rules = [
         'name' => 'required|min:1|max:5',
-        'phone' => 'required',
-        'address' => 'required'
+        'phone' => 'required|max:50',
+        'address' => 'required|max:250',
+        'remark' => 'max:250'
     ];
 
     public function mount(EcCheckout $checkout)
@@ -51,9 +53,10 @@ class Checkout extends Component
 
         //建立訂單
         $user = Auth::user();
-        $data['receiver_name'] = $this->name;
-        $data['receiver_phone'] = $this->phone;
-        $data['receiver_address'] = $this->address;
+        $data['receive_name'] = $this->name;
+        $data['receive_phone'] = $this->phone;
+        $data['receive_address'] = $this->address;
+        $data['remark'] = $this->remark;
         $data['user_id'] = $user->id;
         $data['status'] = 'created';
         $order = Order::create($data);
@@ -71,14 +74,15 @@ class Checkout extends Component
         $formData = [
             'UserId' => $user->id, // 用戶ID , Optional
             'ItemDescription' => 'product list',
-            'ItemName' => 'test',
+            'ItemName' => $order->order_detail,
             'TotalAmount' => \Cart::session($user->id)->getTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
-            'CustomField1' => $order->id
+            'CustomField1' => $order->id,
+            'Remark' => $this->remark
         ];
         //清空購物車
         \Cart::session($user->id)->clear();
-        $checkout = session()->get('checkout');
-        return $checkout->setPostData($formData)->send();
+        session(['formData' =>$formData]);
+        return redirect()->to('/checkout2');
     }
 }
