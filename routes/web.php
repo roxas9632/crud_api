@@ -36,7 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout2','App\Http\Controllers\SiteController@checkoutv2');
     Route::get('/shop/cart','App\Http\Controllers\SiteController@renderCartPage');
     Route::get('/shop/addcart/{product}','App\Http\Controllers\SiteController@addCart');
-
+    Route::get('/products/create','App\Http\Controllers\ProductController@renderMassCreatePage');
+    Route::post('/products/create','App\Http\Controllers\ProductController@massStore');
     Route::group(['prefix' => 'member'], function() {
         Route::get('/orders','App\Http\Controllers\MemberController@showOrders');
     });
