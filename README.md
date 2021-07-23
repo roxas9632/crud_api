@@ -1,12 +1,9 @@
-# 哥布林挨踢商店 & API 示範
-## 關於此專案
-
-此專案由哥布林挨踢頻道所提供，作為電子商務網站開發的範例。此專案所使用的切版為 Colorlib 所有
+API
 
 ## 安裝使用此專案的流程
 
 ### 1.從 Git 把專案 Clone 下來
-`git clone https://github.com/javck/crud_api.git`
+`git clone https://github.com/roxas9632/crud_api.git`
 
 ### 2.建立 .env 檔案，並修改資料庫設定
 
