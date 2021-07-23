@@ -8,7 +8,7 @@
                   <div class="row">
                         <div class="col-xl-12">
                            <div class="hero-cap text-center">
-                              <h2>文章詳細頁</h2>
+                              <h2>優惠快報</h2>
                            </div>
                         </div>
                   </div>
@@ -34,7 +34,7 @@
                         {!! $post->content !!}
                      </div>
                   </div>
-                  <div class="navigation-top">
+                  <!--<div class="navigation-top">
                      <div class="d-sm-flex justify-content-between text-center">
                         <ul class="social-icons">
                            <li><a href="https://www.facebook.com/dialog/share?
@@ -59,7 +59,7 @@
                                  </a>
                               </div>
                               <div class="detials">
-                                 <p>Prev Post</p>
+                                 <p>上t</p>
                                  <a href="#">
                                     <h4>Space The Final Frontier</h4>
                                  </a>
@@ -228,11 +228,11 @@
                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                               type="submit">Search</button>
                         </form>
-                     </aside>
+                     </aside>-->
 
-                     @include('partials.categories',['categories' => $categories])
+                     <!--@include('partials.categories',['categories' => $categories])
 
-                     <aside class="single_sidebar_widget popular_post_widget">
+                     <<aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Recent Post</h3>
                         <div class="media post_item">
                            <img src="assets/img/post/post_1.png" alt="post">
@@ -348,7 +348,7 @@
                      </aside>
                   </div>
                </div>
-            </div>
+            </div>-->
          </div>
       </section>
       <!--================ Blog Area end =================-->

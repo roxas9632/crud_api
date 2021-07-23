@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-12 form-group p_star">
             <input type="textarea" class="form-control" id="receive_address" name="receive_address" wire:model.defer="address"/>
-            <span class="placeholder" data-placeholder="請輸入地址"></span>
+            <span class="placeholder" data-placeholder="地址"></span>
             @error('address') <span class="error" style="color:red;">{{ $message }}</span> @enderror
         </div>
         <div class="col-md-12 form-group">
@@ -29,11 +29,11 @@
 </div>
 <div class="col-lg-4">
     <div class="order_box">
-        <h2>你的訂單</h2>
+        <h2>您的訂房明細</h2>
         <ul class="list">
             <li>
                 <a href="#"
-                    >產品
+                    >房型
                     <span>總計</span>
                 </a>
             </li>
@@ -54,18 +54,14 @@
                     <span>${{ $subtotal }}</span>
                 </a>
             </li>
-            <li>
-                <a href="#"
-                    >運費
-                    <span>貨運: ${{ $transport_fee }}</span>
-                </a>
-            </li>
+
             <li>
                 <a href="#"
                     >總計
                     <span>${{ $total }}</span>
                 </a>
             </li>
+
         </ul>
         <div class="payment_item active">
             <div class="radion_btn">

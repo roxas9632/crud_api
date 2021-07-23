@@ -32,7 +32,7 @@ class Checkout extends Component
     public function mount(EcCheckout $checkout)
     {
 
-        $checkout->setReturnUrl('http://taoyuan.test/shop/checkout/callback');
+        $checkout->setReturnUrl('http://hotel1.test/shop/checkout/callback');
         session(['checkout'=>$checkout]);
         $user = Auth::user();
         $this->cart_items = \Cart::session($user->id)->getContent()->toArray();

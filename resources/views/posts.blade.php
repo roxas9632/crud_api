@@ -54,7 +54,7 @@
           q: "",
           search: function () {
             fetch(
-              "http://taoyuan.test/api/posts/query?s=" +
+              "http://hotel1.test/api/posts/query?s=" +
                 this.q ,requestOptions
             )
               .then((response) => response.json())

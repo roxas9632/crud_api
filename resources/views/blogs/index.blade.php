@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>最新消息</h2>
+                                <h2>優惠快報</h2>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget search_widget">
+                           <!-- <aside class="single_sidebar_widget search_widget">
                                 <form action="#">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
@@ -84,7 +84,7 @@
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">搜尋</button>
                                 </form>
-                            </aside>
+                            </aside>-->
 
                             @include('partials.categories',['categories' => $categories])
 
@@ -102,7 +102,7 @@
                                 </div>
                                 @endforeach
                             </aside>
-                            <aside class="single_sidebar_widget tag_cloud_widget">
+                           <!-- <aside class="single_sidebar_widget tag_cloud_widget">
                                 <h4 class="widget_title">標籤雲</h4>
                                 <ul class="list">
                                     @foreach ($tags as $tag)
@@ -111,10 +111,10 @@
                                     </li>
                                     @endforeach
                                 </ul>
-                            </aside>
+                            </aside>-->
 
 
-                            <aside class="single_sidebar_widget instagram_feeds">
+                            <!--<aside class="single_sidebar_widget instagram_feeds">
                                 <h4 class="widget_title">Instagram Feeds</h4>
                                 <ul class="instagram_row flex-wrap">
                                     <li>
@@ -162,7 +162,7 @@
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
                                 </form>
-                            </aside>
+                            </aside>-->
                         </div>
                     </div>
                 </div>

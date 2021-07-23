@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Watch shop | eCommers</title>
+    <title>旅人渡假村</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -21,18 +21,26 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/lightboxshow.css') }}">
+
+
+
+
     @yield('css')
     @livewireStyles
+    
 </head>
 
 <body>
-    <!--? Preloader Start -->
+
+
+<!--? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
+                <div class="preloader-circle" style="background-color:black"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ asset('img/logo/logo.png') }}" alt="">
+                    <img src="{{ asset('img/logo/loadingwalk.gif') }}" alt="">
                 </div>
             </div>
         </div>
@@ -40,13 +48,13 @@
     <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header header-sticky">
+        <div class="header-area" style="background-color:#969696">
+            <div class="main-header header-sticky" style="background-color:#969696">
                 <div class="container-fluid">
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="{{ asset('img/logo/logo.png') }}" alt=""></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('img/logo/logo1.png') }}" alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">
@@ -62,8 +70,9 @@
                                         <span class="flaticon-search"></span>
                                     </div>
                                 </li>
+                                <li> <a href="{{ url('/register') }}"><span class="flaticon-add"></span></a></li>
                                 @if(!Auth::check())
-                                <li> <a href="{{ url('/login') }}"><span class="flaticon-user"></span></a></li>
+                                <li> <a href="{{ url('/login') }}"><span class="flaticon-user-1"></span></a></li>
                                 @else
                                 <li><a href="{{ url('/user/profile') }}"><span>歡迎,{{ Auth::user()->name }}</span></a></li>
                                 <li><a href="{{ url('/member/orders') }}"><span>歷史訂單紀錄</span></a></li>
@@ -92,7 +101,6 @@
         <!-- Header End -->
     </header>
     <main>
-
         @include('flash::message')
         @yield('body')
     </main>
@@ -124,7 +132,7 @@
                         <div class="footer-copy-right">
                             <p>{{ setting('site.license_rule') }}</p>
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with </i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>
@@ -137,7 +145,8 @@
                                 <a href="#"><i class="fab fa-behance"></i></a>
                                 <a href="#"><i class="fas fa-globe"></i></a>
                             </div>
-                            客服專線:{{ $tel }}
+                           <!-- 客服專線:{{ $tel }}-->
+                            客服專線:{{ "(04)-25681234" }}
                         </div>
                     </div>
                 </div>
@@ -157,7 +166,12 @@
     <!-- Search model end -->
 
     <!-- JS here -->
-
+    <!-- 聚光燈 -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/lightbox.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    
     <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js') }}"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -190,6 +204,10 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- 套版 -->
+
+
     @yield('js')
     <script>
         <!-- Flash Message Overlay會用到，需保留 -->

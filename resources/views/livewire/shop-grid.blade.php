@@ -7,9 +7,9 @@
                         <!--Nav Button  -->
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">新到貨商品</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">熱銷房型</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> 價格從高到低</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> 熱門商品 </a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">最常回訪</a>
                             </div>
                         </nav>
                         <!--End Nav Button  -->
@@ -44,7 +44,7 @@
                                     <div class="popular-img">
                                         <img src="{{ $prod->picUrl }}" alt="{{ $prod->name }}">
                                         <div class="img-cap">
-                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"><span>加入購物車</span></a>
+                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"><span>加入訂房清單</span></a>
                                         </div>
                                         <div class="favorit-items">
                                             <span class="flaticon-heart"></span>
@@ -68,7 +68,7 @@
                                     <div class="popular-img">
                                         <img src="{{ $prod->picUrl }}" alt="{{ $prod->name }}">
                                         <div class="img-cap">
-                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"><span>加入購物車</span></a>
+                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"><span>加入訂房清單</span></a>
                                         </div>
                                         <div class="favorit-items">
                                             <span class="flaticon-heart"></span>
@@ -92,7 +92,7 @@
                                     <div class="popular-img">
                                         <img src="{{ $prod->picUrl }}" alt="{{ $prod->name }}">
                                         <div class="img-cap">
-                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"<span>加入購物車</span></a>
+                                            <a href="{{ url('/shop/addcart/'.$prod->id) }}"<span>加入訂房清單</span></a>
                                         </div>
                                         <div class="favorit-items">
                                             <span class="flaticon-heart"></span>

@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>私房商店</h2>
+                                <h2>房型列表</h2>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*Route::get('profile', function () {
+    return "my email";
+ })->middleware('verified');
+
+ // Email Verification Routes...
+Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');*/
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,6 +31,16 @@ Route::get('/', function () {
 Route::get('/thank',function(){
     return view('thank');
 });
+
+Route::get('/about',function(){
+    return view('about');
+});
+
+Route::get('/chart',function(){
+    return view('chart');
+});
+
+
 
 Route::get('/shop','App\Http\Controllers\SiteController@renderShopPage');
 

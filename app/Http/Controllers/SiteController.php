@@ -22,13 +22,19 @@ class SiteController extends Controller
     public function __construct(Checkout $checkout)
     {
         $this->checkout = $checkout;
-        $this->checkout->setReturnUrl('http://taoyuan.test/shop/checkout/callback');
+        $this->checkout->setReturnUrl('http://hotel1.test/shop/checkout/callback');
     }
 
     public function renderShopPage()
     {
 
         return view('shop.index');
+    }
+
+    public function renderChartPage()
+    {
+
+        return view('chart');
     }
 
     public function renderProductDetailPage(Request $request, Product $product)
@@ -93,6 +99,13 @@ class SiteController extends Controller
         return view('blogs.index',compact('posts','categories','posts_recent','tags'));
     }
 
+    
+    public function renderAboutPage()
+    {
+
+        return view('about');
+    }
+
     public function renderBlogDetailPage(Post $post)
     {
         $categories = Category::where('enabled',true)->orderBy('sort','asc')->get();
@@ -106,10 +119,11 @@ class SiteController extends Controller
                         'pay_type']);
         $data['user_id'] = $user->id;
         $data['status'] = 'created';
-        $order = Order::create($data);
         $cart_items = \Cart::session($user->id)->getContent();
+
         foreach ($cart_items as $item) {
             $newOrderProduct = new OrderProduct();
+
             $newOrderProduct->order_id = $order->id;
             $newOrderProduct->product_id = $item->associatedModel->id;
             $newOrderProduct->qty = $item->quantity;
@@ -123,9 +137,10 @@ class SiteController extends Controller
             'ItemName' => 'test',
             'TotalAmount' => \Cart::session($user->id)->getTotal(),
             'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
-            'OrderResultURL' => 'http://taoyuan.test/shop/checkout/callback',
+            'OrderResultURL' => 'http://hotel1.test/shop/checkout/callback',
             'CustomField1' => $order->id
         ];
+        
         //清空購物車
         \Cart::session($user->id)->clear();
 
@@ -155,7 +170,7 @@ class SiteController extends Controller
             $order->save();
             flash()->overlay('訂單付款成功!', '付款結果');
         }else{
-            flash()->overlay('唉唷，訂單付款未成功!', '付款結果');
+            flash()->overlay('訂單付款未成功!', '付款結果');
         }
 
         //返回首頁，並且要有訂單是否完成的提示
